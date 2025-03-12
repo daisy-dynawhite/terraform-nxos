@@ -9,7 +9,7 @@ terraform {
 
 provider "nxos" {
   username = "admin"
-  password = "25M4rch86@@"
+  password = "daisydev"
   url     = "https://192.168.1.101"   # Change to your device IP
   insecure = true            # Set to false if using valid TLS certs
   alias = "LFN101"
@@ -17,7 +17,7 @@ provider "nxos" {
 
 provider "nxos" {
   username = "admin"
-  password = "25M4rch86@@"
+  password = "daisydev"
   url     = "https://192.168.1.102"   # Change to your device IP
   insecure = true            # Set to false if using valid TLS certs
   alias = "LFN102"
