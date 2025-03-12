@@ -24,6 +24,13 @@ resource "nxos_pim_interface" "LFN101-PIM-Lo0" {
   sparse_mode  = true
   provider = nxos.LFN101
 }
+resource "nxos_pim_interface" "LFN101-PIM-Lo10" {
+  vrf_name     = "default"
+  interface_id = "lo10"
+  admin_state  = "enabled"
+  sparse_mode  = true
+  provider = nxos.LFN101
+}
 resource "nxos_pim_interface" "LFN101-PIM-Eth1-1" {
   vrf_name     = "default"
   interface_id = "eth1/1"
@@ -61,6 +68,13 @@ resource "nxos_pim_static_rp_group_list" "LFN102-PIM-RP-GL" {
 resource "nxos_pim_interface" "LFN102-PIM-Lo0" {
   vrf_name     = "default"
   interface_id = "lo0"
+  admin_state  = "enabled"
+  sparse_mode  = true
+  provider = nxos.LFN102
+}
+resource "nxos_pim_interface" "LFN102-PIM-Lo10" {
+  vrf_name     = "default"
+  interface_id = "lo10"
   admin_state  = "enabled"
   sparse_mode  = true
   provider = nxos.LFN102

@@ -16,6 +16,15 @@
     provider = nxos.LFN101
     depends_on = [ nxos_ospf_vrf.LFN101-ospf-vrf ]
     }
+    resource "nxos_ospf_interface" "LFN101-ospf-Lo10" {
+    instance_name         = "underlay"
+    vrf_name              = "default"
+    interface_id          = "lo10"
+    area                  = "0.0.0.0"
+    network_type          = "p2p"
+    provider = nxos.LFN101
+    depends_on = [ nxos_ospf_vrf.LFN101-ospf-vrf ]
+    }
     resource "nxos_ospf_interface" "LFN101-ospf-Eth1-1" {
     instance_name         = "underlay"
     vrf_name              = "default"
@@ -48,6 +57,15 @@
     instance_name         = "underlay"
     vrf_name              = "default"
     interface_id          = "lo0"
+    area                  = "0.0.0.0"
+    network_type          = "p2p"
+    provider = nxos.LFN102
+    depends_on = [ nxos_ospf_vrf.LFN102-ospf-vrf ]
+    }
+    resource "nxos_ospf_interface" "LFN102-ospf-Lo10" {
+    instance_name         = "underlay"
+    vrf_name              = "default"
+    interface_id          = "lo10"
     area                  = "0.0.0.0"
     network_type          = "p2p"
     provider = nxos.LFN102

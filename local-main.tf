@@ -23,6 +23,14 @@ provider "nxos" {
   alias = "LFN102"
 }
 
+provider "nxos" {
+  username = "admin"
+  password = "daisydev"
+  url     = "https://192.168.1.201"   # Change to your device IP
+  insecure = true            # Set to false if using valid TLS certs
+  alias = "SPN201"
+}
+
 module "LFN101"{
   source = "./modules/nxos_device"
   providers = {nxos = nxos.LFN101 }
@@ -31,4 +39,9 @@ module "LFN101"{
 module "LFN102"{
   source = "./modules/nxos_device"
   providers = {nxos = nxos.LFN102 }
+}
+
+module "SPN201"{
+  source = "./modules/nxos_device"
+  providers = {nxos = nxos.SPN201 }
 }
