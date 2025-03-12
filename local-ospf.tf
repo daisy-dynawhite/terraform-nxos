@@ -107,3 +107,30 @@
     provider = nxos.SPN201
     depends_on = [ nxos_ospf_vrf.SPN201-ospf-vrf ]
     }
+    resource "nxos_ospf_interface" "SPN201-ospf-Lo10" {
+    instance_name         = "underlay"
+    vrf_name              = "default"
+    interface_id          = "lo10"
+    area                  = "0.0.0.0"
+    network_type          = "p2p"
+    provider = nxos.SPN201
+    depends_on = [ nxos_ospf_vrf.SPN201-ospf-vrf ]
+    }
+    resource "nxos_ospf_interface" "SPN201-ospf-Eth1-1" {
+    instance_name         = "underlay"
+    vrf_name              = "default"
+    interface_id          = "eth1/1"
+    area                  = "0.0.0.0"
+    network_type          = "p2p"
+    provider = nxos.SPN201
+    depends_on = [ nxos_ospf_vrf.SPN201-ospf-vrf ]
+    }
+    resource "nxos_ospf_interface" "SPN201-ospf-Eth1-2" {
+    instance_name         = "underlay"
+    vrf_name              = "default"
+    interface_id          = "eth1/2"
+    area                  = "0.0.0.0"
+    network_type          = "p2p"
+    provider = nxos.SPN201
+    depends_on = [ nxos_ospf_vrf.SPN201-ospf-vrf ]
+    }

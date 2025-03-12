@@ -35,9 +35,11 @@ resource "nxos_nve_vni" "LFN102-NVE-VNI10010" {
   vni                           = 10010
   multicast_group               = "238.0.0.10"
   provider = nxos.LFN102
+  depends_on = [ nxos_nve_vni_container.LFN102-NVE-VNI-CONT ]
 }
 resource "nxos_nve_vni" "LFN102-NVE-VNI10020" {
   vni                           = 10020
   multicast_group               = "238.0.0.20"
   provider = nxos.LFN102
+  depends_on = [ nxos_nve_vni_container.LFN102-NVE-VNI-CONT ]
 }
