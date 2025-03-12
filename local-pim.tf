@@ -93,10 +93,17 @@
     source_interface = "loopback100"
     provider = nxos.SPN201
     }
-    resource "nxos_pim_anycast_rp_peer" "SPN201-PIM-ACAST-RPPeer" {
+    resource "nxos_pim_anycast_rp_peer" "SPN201-PIM-ACAST-RPPeer1" {
     vrf_name       = "default"
     address        = "192.168.238.238/32"
     rp_set_address = "192.168.238.201/32"
+    provider = nxos.SPN201
+    depends_on = [ nxos_pim_anycast_rp.SPN201-PIM-ACAST-RP ]
+    }
+    resource "nxos_pim_anycast_rp_peer" "SPN201-PIM-ACAST-RPPeer2" {
+    vrf_name       = "default"
+    address        = "192.168.238.238/32"
+    rp_set_address = "192.168.238.202/32"
     provider = nxos.SPN201
     depends_on = [ nxos_pim_anycast_rp.SPN201-PIM-ACAST-RP ]
     }
