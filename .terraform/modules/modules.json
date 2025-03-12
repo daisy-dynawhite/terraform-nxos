@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"LFN101","Source":"./modules/nxos_device","Dir":"modules/nxos_device"}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"LFN101","Source":"./modules/nxos_device","Dir":"modules/nxos_device"},{"Key":"LFN102","Source":"./modules/nxos_device","Dir":"modules/nxos_device"}]}
