@@ -179,6 +179,12 @@
     description  = "***  VTEP/NVE Lo10 ***"
     provider = nxos.SPN201
     }
+    resource "nxos_loopback_interface" "INTF-SPN201-Lo100" {
+    interface_id = "lo100"
+    admin_state  = "up"
+    description  = "***  Anycast RP - Local ***"
+    provider = nxos.SPN201
+    }
 
     # Interface - Physical
     resource "nxos_physical_interface" "INTF-SPN201-Eth1-1" {
@@ -222,6 +228,19 @@
     address      = "192.168.10.201"
     provider = nxos.SPN201
     depends_on = [ nxos_ipv4_interface.INTF-SPN201-Lo10-IPV4 ]
+    }
+    resource "nxos_ipv4_interface" "INTF-SPN201-Lo100-IPV4" {
+    vrf          = "default"
+    interface_id = "lo100"
+    provider = nxos.SPN201
+    depends_on = [ nxos_loopback_interface.INTF-SPN201-Lo100 ]
+    }
+    resource "nxos_ipv4_interface_address" "INTF-SPN201-Lo100-IPV4-ADDR" {
+    vrf          = "default"
+    interface_id = "lo100"
+    address      = "192.168.238.201/32"
+    provider = nxos.SPN201
+    depends_on = [ nxos_ipv4_interface.INTF-SPN201-Lo100-IPV4 ]
     }
     resource "nxos_ipv4_interface" "INTF-SPN201-Eth1-1-IPV4" {
     vrf          = "default"

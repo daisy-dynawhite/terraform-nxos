@@ -90,3 +90,20 @@
     depends_on = [ nxos_ospf_vrf.LFN102-ospf-vrf ]
     }
 
+# OSPF - SPN-201
+    resource "nxos_ospf_vrf" "SPN201-ospf-vrf" {
+    instance_name            = "underlay"
+    name                     = "default"
+    admin_state              = "enabled"
+    router_id                = "192.168.0.201"
+    provider = nxos.SPN201
+    }
+    resource "nxos_ospf_interface" "SPN201-ospf-Lo0" {
+    instance_name         = "underlay"
+    vrf_name              = "default"
+    interface_id          = "lo0"
+    area                  = "0.0.0.0"
+    network_type          = "p2p"
+    provider = nxos.SPN201
+    depends_on = [ nxos_ospf_vrf.SPN201-ospf-vrf ]
+    }
