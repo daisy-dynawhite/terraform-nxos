@@ -25,7 +25,24 @@
     description  = "***  BGP Lo100 ***"
     provider = nxos.LFN101
     }
-
+    resource "nxos_svi_interface" "INTF-LFN101-VLAN11" {
+    interface_id = "vlan11"
+    admin_state  = "up"
+    description  = "*** VLAN11 - CUST01 - L3VNI"    
+    mtu          = 9216
+    provider = nxos.LFN101
+    }
+    resource "nxos_svi_interface_vrf" "INTF-LFN101-VLAN11" {
+    interface_id = "vlan11"
+    vrf_dn       = "sys/inst-VRF-CUST01"
+    provider = nxos.LFN101
+    } 
+    resource "nxos_ipv4_interface" "INTF-LFN101-VLAN11-IP" {
+    vrf          = "VRF-CUST01"
+    interface_id = "vlan11"
+    forward      = "enabled"
+    provider = nxos.LFN101
+    }
     # Interface - Physical
     resource "nxos_physical_interface" "INTF-LFN101-Eth1-1" {
     interface_id             = "eth1/1"
@@ -124,7 +141,18 @@
     description  = "*** BGP Lo100 ***"
     provider = nxos.LFN102
     }
-
+    resource "nxos_svi_interface" "INTF-LFN102-VLAN11" {
+    interface_id = "vlan11"
+    admin_state  = "up"
+    description  = "*** VLAN11 - CUST01 - L3VNI"    
+    mtu          = 9216
+    provider = nxos.LFN102
+    }
+    resource "nxos_svi_interface_vrf" "INTF-LFN102-VLAN11" {
+    interface_id = "vlan11"
+    vrf_dn       = "sys/inst-VRF-CUST01"
+    provider = nxos.LFN102
+    } 
     # Interface - Physical
     resource "nxos_physical_interface" "INTF-LFN102-Eth1-1" {
     interface_id             = "eth1/1"
