@@ -25,11 +25,40 @@
     description  = "***  BGP Lo100 ***"
     provider = nxos.LFN101
     }
+    resource "nxos_svi_interface" "INTF-LFN101-VLAN10" {
+    interface_id = "vlan10"
+    admin_state  = "up"
+    description  = "*** VLAN10 - CUST01 - SVI"    
+    mtu          = 9216
+    provider = nxos.LFN101
+    }
     resource "nxos_svi_interface" "INTF-LFN101-VLAN11" {
     interface_id = "vlan11"
     admin_state  = "up"
     description  = "*** VLAN11 - CUST01 - L3VNI"    
     mtu          = 9216
+    provider = nxos.LFN101
+    }
+    resource "nxos_svi_interface_vrf" "INTF-LFN101-VLAN10" {
+    interface_id = "vlan10"
+    vrf_dn       = "sys/inst-VRF-CUST01"
+    provider = nxos.LFN101
+    } 
+    resource "nxos_ipv4_interface" "INTF-LFN101-VLAN10-IP" {
+    vrf          = "VRF-CUST01"
+    interface_id = "vlan10"
+    provider = nxos.LFN101
+    }
+    resource "nxos_ipv4_interface_address" "INTF-LFN101-VLAN10-IPV4-ADDR" {
+    vrf          = "VRF-CUST01"
+    interface_id = "vlan10"
+    address      = "192.168.10.1/28"
+    provider = nxos.LFN101
+    }
+    resource "nxos_hmm_interface" "INTF-LFN101-VLAN10-HMM" {
+    interface_id = "vlan10"
+    admin_state  = "enabled"
+    mode         = "anycastGW"
     provider = nxos.LFN101
     }
     resource "nxos_svi_interface_vrf" "INTF-LFN101-VLAN11" {
@@ -141,6 +170,13 @@
     description  = "*** BGP Lo100 ***"
     provider = nxos.LFN102
     }
+    resource "nxos_svi_interface" "INTF-LFN102-VLAN10" {
+    interface_id = "vlan10"
+    admin_state  = "up"
+    description  = "*** VLAN10 - CUST01 - SVI"    
+    mtu          = 9216
+    provider = nxos.LFN102
+    }
     resource "nxos_svi_interface" "INTF-LFN102-VLAN11" {
     interface_id = "vlan11"
     admin_state  = "up"
@@ -153,6 +189,28 @@
     vrf_dn       = "sys/inst-VRF-CUST01"
     provider = nxos.LFN102
     } 
+    resource "nxos_svi_interface_vrf" "INTF-LFN102-VLAN10" {
+    interface_id = "vlan10"
+    vrf_dn       = "sys/inst-VRF-CUST01"
+    provider = nxos.LFN102
+    } 
+    resource "nxos_ipv4_interface" "INTF-LFN102-VLAN10-IP" {
+    vrf          = "VRF-CUST01"
+    interface_id = "vlan10"
+    provider = nxos.LFN102
+    }
+    resource "nxos_ipv4_interface_address" "INTF-LFN102-VLAN10-IPV4-ADDR" {
+    vrf          = "VRF-CUST01"
+    interface_id = "vlan10"
+    address      = "192.168.10.1/28"
+    provider = nxos.LFN102
+    }
+    resource "nxos_hmm_interface" "INTF-LFN102-VLAN10-HMM" {
+    interface_id = "vlan10"
+    admin_state  = "enabled"
+    mode         = "anycastGW"
+    provider = nxos.LFN102
+    }
     # Interface - Physical
     resource "nxos_physical_interface" "INTF-LFN102-Eth1-1" {
     interface_id             = "eth1/1"
