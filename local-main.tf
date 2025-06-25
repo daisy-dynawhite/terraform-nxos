@@ -7,41 +7,43 @@ terraform {
   }
 }
 
-provider "nxos" {
-  username = "admin"
-  password = "daisydev"
-  url     = "https://192.168.1.101"   # Change to your device IP
-  insecure = true            # Set to false if using valid TLS certs
-  alias = "LFN101"
-}
+# Provider information
+  provider "nxos" {
+    username = "admin"
+    password = "daisydev"
+    url     = "https://192.168.1.101"  
+    insecure = true           
+    alias = "LFN101"
+  }
 
-provider "nxos" {
-  username = "admin"
-  password = "daisydev"
-  url     = "https://192.168.1.102"   # Change to your device IP
-  insecure = true            # Set to false if using valid TLS certs
-  alias = "LFN102"
-}
+  provider "nxos" {
+    username = "admin"
+    password = "daisydev"
+    url     = "https://192.168.1.102"  
+    insecure = true            
+    alias = "LFN102"
+  }
 
-provider "nxos" {
-  username = "admin"
-  password = "daisydev"
-  url     = "https://192.168.1.201"   # Change to your device IP
-  insecure = true            # Set to false if using valid TLS certs
-  alias = "SPN201"
-}
+  provider "nxos" {
+    username = "admin"
+    password = "daisydev"
+    url     = "https://192.168.1.201"  
+    insecure = true            
+    alias = "SPN201"
+  }
 
-module "LFN101"{
-  source = "./modules/nxos_device"
-  providers = {nxos = nxos.LFN101 }
-}
+# Modules
+  module "LFN101"{
+    source = "./modules/nxos_device"
+    providers = {nxos = nxos.LFN101 }
+  }
 
-module "LFN102"{
-  source = "./modules/nxos_device"
-  providers = {nxos = nxos.LFN102 }
-}
+  module "LFN102"{
+    source = "./modules/nxos_device"
+    providers = {nxos = nxos.LFN102 }
+  }
 
-module "SPN201"{
-  source = "./modules/nxos_device"
-  providers = {nxos = nxos.SPN201 }
-}
+  module "SPN201"{
+    source = "./modules/nxos_device"
+    providers = {nxos = nxos.SPN201 }
+  }
