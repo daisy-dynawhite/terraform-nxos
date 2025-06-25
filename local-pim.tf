@@ -13,6 +13,13 @@
     sparse_mode  = true
     provider = nxos.LFN101
     }
+    resource "nxos_pim_interface" "LFN101-PIM-Lo100" {
+    vrf_name     = "default"
+    interface_id = "lo100"
+    admin_state  = "enabled"
+    sparse_mode  = true
+    provider = nxos.LFN101
+    }
     resource "nxos_pim_interface" "LFN101-PIM-Eth1-1" {
     vrf_name     = "default"
     interface_id = "eth1/1"
@@ -39,6 +46,13 @@
     resource "nxos_pim_interface" "LFN102-PIM-Lo10" {
     vrf_name     = "default"
     interface_id = "lo10"
+    admin_state  = "enabled"
+    sparse_mode  = true
+    provider = nxos.LFN102
+    }
+    resource "nxos_pim_interface" "LFN102-PIM-Lo100" {
+    vrf_name     = "default"
+    interface_id = "lo100"
     admin_state  = "enabled"
     sparse_mode  = true
     provider = nxos.LFN102
@@ -73,6 +87,13 @@
     sparse_mode  = true
     provider = nxos.SPN201
     }
+    resource "nxos_pim_interface" "SPN102-PIM-Lo100" {
+    vrf_name     = "default"
+    interface_id = "lo10"
+    admin_state  = "enabled"
+    sparse_mode  = true
+    provider = nxos.SPN201
+    }
     resource "nxos_pim_interface" "SPN201-PIM-Eth1-1" {
     vrf_name     = "default"
     interface_id = "eth1/1"
@@ -89,8 +110,8 @@
     }
     resource "nxos_pim_anycast_rp" "SPN201-PIM-ACAST-RP" {
     vrf_name         = "default"
-    local_interface = "loopback100"
-    source_interface = "loopback100"
+    local_interface = "loopback238"
+    source_interface = "loopback238"
     provider = nxos.SPN201
     }
     resource "nxos_pim_anycast_rp_peer" "SPN201-PIM-ACAST-RPPeer1" {
