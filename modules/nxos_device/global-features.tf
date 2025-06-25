@@ -16,9 +16,6 @@ resource "nxos_feature_ospf" "ospf" {
 resource "nxos_feature_vn_segment" "vnseg" {
   admin_state = "enabled"
 }
-resource "nxos_feature_vpc" "vpc" {
-  admin_state = "enabled"
-}
 resource "nxos_feature_interface_vlan" "ivlan" {
   admin_state = "enabled"
 }
