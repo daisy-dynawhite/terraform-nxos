@@ -27,13 +27,6 @@
     sparse_mode  = true
     provider = nxos.LFN101
     }
-    resource "nxos_pim_interface" "LFN101-PIM-Eth1-2" {
-    vrf_name     = "default"
-    interface_id = "eth1/2"
-    admin_state  = "enabled"
-    sparse_mode  = true
-    provider = nxos.LFN101
-    }
 
 # PIM - LFN-102
     resource "nxos_pim_interface" "LFN102-PIM-Lo0" {
@@ -90,6 +83,13 @@
     resource "nxos_pim_interface" "SPN102-PIM-Lo100" {
     vrf_name     = "default"
     interface_id = "lo10"
+    admin_state  = "enabled"
+    sparse_mode  = true
+    provider = nxos.SPN201
+    }
+    resource "nxos_pim_interface" "SPN102-PIM-Lo238" {
+    vrf_name     = "default"
+    interface_id = "lo238"
     admin_state  = "enabled"
     sparse_mode  = true
     provider = nxos.SPN201

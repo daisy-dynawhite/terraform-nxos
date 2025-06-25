@@ -5,6 +5,11 @@
     router_id = "192.168.100.101"
     provider = nxos.LFN101
     }
+    resource "nxos_bgp_vrf" "BGP-VRF-CUST01-LFN101" {
+    asn       = "65000"
+    name      = "VRF-CUST01"
+    provider = nxos.LFN101
+    }
 
     resource "nxos_bgp_peer" "BGP-Peer-LFN101-SPN201" {
     asn               = "65000"
@@ -14,7 +19,13 @@
     source_interface  = "lo100"
     provider = nxos.LFN101    
     }
-
+    resource "nxos_bgp_address_family" "BGP-AF-LFN101-SPN201-VRF" {
+    asn                                    = "65001"
+    vrf                                    = "VRF-CUST01"
+    address_family                         = "ipv4-ucast"
+    advertise_l2vpn_evpn = "enabled"
+    provider = nxos.LFN101 
+    }
     resource "nxos_bgp_peer_address_family" "BGP-AF-LFN101-SPN201" {
     asn                     = "65000"
     vrf                     = "default"
@@ -32,6 +43,11 @@
     router_id = "192.168.100.102"
     provider = nxos.LFN102
     }
+    resource "nxos_bgp_vrf" "BGP-VRF-CUST01-LFN102" {
+    asn       = "65000"
+    name      = "VRF-CUST01"
+    provider = nxos.LFN102
+    }
 
     resource "nxos_bgp_peer" "BGP-Peer-LFN102-SPN201" {
     asn               = "65000"
@@ -41,7 +57,13 @@
     source_interface  = "lo100"
     provider = nxos.LFN102    
     }
-
+    resource "nxos_bgp_address_family" "BGP-AF-LFN102-SPN201-VRF" {
+    asn                                    = "65001"
+    vrf                                    = "VRF-CUST01"
+    address_family                         = "ipv4-ucast"
+    advertise_l2vpn_evpn = "enabled"
+    provider = nxos.LFN102    
+    }
     resource "nxos_bgp_peer_address_family" "BGP-AF-LFN102-SPN201" {
     asn                     = "65000"
     vrf                     = "default"
@@ -82,6 +104,7 @@
     address                 = "192.168.100.101"
     address_family          = "l2vpn-evpn"
     send_community_extended = "enabled"
+    control = "rr-client"
     provider = nxos.SPN201
     }
 
@@ -91,5 +114,6 @@
     address                 = "192.168.100.102"
     address_family          = "l2vpn-evpn"
     send_community_extended = "enabled"
+    control = "rr-client"
     provider = nxos.SPN201
     }

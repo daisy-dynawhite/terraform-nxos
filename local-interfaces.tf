@@ -82,11 +82,13 @@
     }
     resource "nxos_physical_interface" "INTF-LFN101-Eth1-2" {
     interface_id             = "eth1/2"
-    description              = "*** LFN101 Eth1/2 - SPN202 Eth1/1"
-    layer                    = "Layer3"
-    medium                   = "p2p"
+    description              = "*** LFN101 Eth1/2 - WVM001"
+    layer                    = "Layer2"
+    mode = "access"
+    access_vlan = "vlan-10"
     provider = nxos.LFN101
     }
+
 
     # Interface Assignments / Addressing
     resource "nxos_ipv4_interface" "INTF-LFN101-Lo0-IPV4" {
@@ -135,13 +137,6 @@
     provider = nxos.LFN101
     depends_on = [ nxos_physical_interface.INTF-LFN101-Eth1-1 ]
     }  
-    resource "nxos_ipv4_interface" "INTF-LFN101-Eth1-2-IPV4" {
-    vrf          = "default"
-    interface_id = "eth1/2"
-    unnumbered = "lo0"
-    provider = nxos.LFN101
-    depends_on = [ nxos_physical_interface.INTF-LFN101-Eth1-2 ]
-    }  
 
 # Interfaces - LFN102
 
@@ -184,13 +179,13 @@
     mtu          = 9216
     provider = nxos.LFN102
     }
-    resource "nxos_svi_interface_vrf" "INTF-LFN102-VLAN11" {
-    interface_id = "vlan11"
+    resource "nxos_svi_interface_vrf" "INTF-LFN102-VLAN10" {
+    interface_id = "vlan10"
     vrf_dn       = "sys/inst-VRF-CUST01"
     provider = nxos.LFN102
     } 
-    resource "nxos_svi_interface_vrf" "INTF-LFN102-VLAN10" {
-    interface_id = "vlan10"
+    resource "nxos_svi_interface_vrf" "INTF-LFN102-VLAN11" {
+    interface_id = "vlan11"
     vrf_dn       = "sys/inst-VRF-CUST01"
     provider = nxos.LFN102
     } 
@@ -224,6 +219,14 @@
     description              = "*** LFN101 Eth1/2 - SPN202 Eth1/2"
     layer                    = "Layer3"
     medium                   = "p2p"
+    provider = nxos.LFN102
+    }
+    resource "nxos_physical_interface" "INTF-LFN102-Eth1-3" {
+    interface_id             = "eth1/3"
+    description              = "*** LFN101 Eth1/3 - LVM001"
+    layer                    = "Layer2"
+    mode = "access"
+    access_vlan = "vlan-10"
     provider = nxos.LFN102
     }
 
@@ -381,7 +384,7 @@
     resource "nxos_ipv4_interface_address" "INTF-SPN201-Lo238-IPV4-ADDR" {
     vrf          = "default"
     interface_id = "lo238"
-    address      = "192.168.238.201/32"
+    address      = "192.168.238.201/24"
     provider = nxos.SPN201
     depends_on = [ nxos_ipv4_interface.INTF-SPN201-Lo238-IPV4 ]
     }
