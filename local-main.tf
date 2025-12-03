@@ -2,14 +2,14 @@ terraform {
   required_providers {
     nxos = {
       source  = "CiscoDevNet/nxos"
-      version = ">= 0.5.9"
+      version = ">= 0.5.10"
     }
   }
 }
 
 # Provider information
   provider "nxos" {
-    username = "admin"
+    username = "daisy"
     password = "daisydev"
     url     = "https://192.168.1.101"  
     insecure = true           
@@ -17,7 +17,7 @@ terraform {
   }
 
   provider "nxos" {
-    username = "admin"
+    username = "daisy"
     password = "daisydev"
     url     = "https://192.168.1.102"  
     insecure = true            
@@ -25,7 +25,7 @@ terraform {
   }
 
   provider "nxos" {
-    username = "admin"
+    username = "daisy"
     password = "daisydev"
     url     = "https://192.168.1.201"  
     insecure = true            

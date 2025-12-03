@@ -19,3 +19,6 @@ resource "nxos_feature_vn_segment" "vnseg" {
 resource "nxos_feature_interface_vlan" "ivlan" {
   admin_state = "enabled"
 }
+resource "nxos_feature_hmm" "fabric-forwarding" {
+  admin_state = "enabled"
+}
