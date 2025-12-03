@@ -381,7 +381,7 @@
     # Interface - Physical
     resource "nxos_physical_interface" "INTF-SPN201-Eth1-1" {
     interface_id             = "eth1/1"
-    description              = "*** SPN201 Eth1/1 - LFN101 Eth1/1"
+    #description              = "*** SPN201 Eth1/1 - LFN101 Eth1/1"
     layer                    = "Layer3"
     medium                   = "p2p"
     provider = nxos.SPN201
